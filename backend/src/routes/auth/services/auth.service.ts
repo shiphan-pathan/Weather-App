@@ -59,6 +59,10 @@ export const refreshService = async (token: string) => {
 
   if (!storedToken) throw new Error("Invalid refresh token");
 
+  // if (storedToken.expiresAt < new Date()) {
+  //   throw new Error("Refresh token expired");
+  // }
+
   await prisma.refreshToken.delete({ where: { token } });
 
   const newAccessToken = generateAccessToken(decoded.userId);
