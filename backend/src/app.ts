@@ -6,6 +6,7 @@ import csrf from "csurf";
 import swaggerUi from "swagger-ui-express";
 import swaggerSpec from "./swagger";
 import authRoutes from "./routes/auth/routes/auth.route";
+import { env } from "./config/env";
 
 const app = express();
 
@@ -15,7 +16,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: env.CLIENT_URL,
     credentials: true,
   })
 );

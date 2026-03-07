@@ -17,6 +17,8 @@ requiredEnv.forEach((key) => {
 
 export const env = {
   PORT: Number(process.env.PORT) || 5000,
+  CLIENT_URL: process.env.CLIENT_URL,
+  NODE_ENV: process.env.NODE_ENV || "development",
   accessSecret: process.env.JWT_ACCESS_SECRET!,
   refreshSecret: process.env.JWT_REFRESH_SECRET!,
   accessExpires: process.env.ACCESS_TOKEN_EXPIRES!,
