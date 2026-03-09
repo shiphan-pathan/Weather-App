@@ -9,7 +9,7 @@ const Button = ({ title, onClick, type = "button" }: ButtonProps) => {
     <button
       type={type}
       onClick={onClick}
-      className="w-full bg-blue-300 text-white py-2 px-4 rounded-md hover:bg-blue-400 transition"
+      className="w-full py-3 rounded-xl text-white font-semibold bg-linear-to-r from-blue-500 to-blue-400 hover:opacity-90"
     >
       {title}
     </button>
