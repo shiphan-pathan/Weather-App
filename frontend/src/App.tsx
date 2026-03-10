@@ -1,14 +1,13 @@
 import './App.css'
-import LoginPage from './pages/auth/LoginPage'
-import SignupPage from './pages/auth/SignupPage'
+import WeatherPage from './pages/weather/WeatherPage'
+
 
 function App() {
  
 
   return (
    <div className='justify-center' >
-    <LoginPage />
-    <SignupPage />
+      <WeatherPage />
    </div>
   )
 }
