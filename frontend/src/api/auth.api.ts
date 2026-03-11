@@ -34,3 +34,8 @@ export const refreshToken = async () => {
   const response = await axiosInstance.post("/auth/refresh");
   return response.data;
 };
+
+export const getCookies = async () => {
+  const response = await axiosInstance.get("/auth/cookies");
+  return response.data;
+};

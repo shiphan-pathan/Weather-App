@@ -2,6 +2,8 @@ import { useState } from "react"
 import Button from "../../components/Button"
 import Input from "../../components/Input"
 import weatherIcon from '../../assets/weather.png'
+import { loginUser } from "../../api/auth.api"
+import { useNavigate } from "react-router";
 
 const LoginPage = () => {
 
@@ -10,6 +12,8 @@ const [formData, setFormData] = useState({
     password: '',
 })
 
+const navigate = useNavigate();
+
 const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
         ...formData,
@@ -17,9 +21,21 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     })
 }
 
-const handleLogin = (e: React.FormEvent) => {
+const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Implement login logic here
+    
+    try {
+
+      const response = await loginUser({
+        email: formData.email,
+        password: formData.password,
+      })
+      console.log("Login successful:", response);
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
+
+    navigate("/weather")
 }
 
 

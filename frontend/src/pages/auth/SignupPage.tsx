@@ -2,6 +2,8 @@ import React from 'react'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
 import weatherIcon from '../../assets/weather.png'
+import { signupUser } from '../../api/auth.api'
+import { useNavigate } from 'react-router-dom'
 
 const SignupPage = () => {
 
@@ -11,6 +13,8 @@ const SignupPage = () => {
         password: '',
     })
 
+    const navigate = useNavigate();
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({
             ...formData,
@@ -18,8 +22,20 @@ const SignupPage = () => {
         })
     }
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
+        try {
+          await signupUser({
+            name: formData.username,
+            email: formData.email,
+            password: formData.password,
+          })
+          console.log("Signup successful");
+        } catch (error) {
+          console.error("Signup failed:", error);
+        }
+
+        navigate("/")
     }
 
 
