@@ -47,3 +47,16 @@ export const logout = async (req: Request, res: Response) => {
 
   res.json({ message: "Logged out successfully" });
 };
+
+export const getCookies = (req: Request, res: Response) => {
+  const token = req.cookies.accessToken; 
+
+  if (!token) return res.status(401).json({ message: "Unauthorized" });
+
+  // res.json({ token });
+
+  return res.status(200).json({
+    authenticated: true,
+  })
+};
+

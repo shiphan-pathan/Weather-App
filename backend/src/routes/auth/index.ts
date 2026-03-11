@@ -4,6 +4,7 @@ import {
   login,
   refresh,
   logout,
+  getCookies,
 } from "./controllers/auth.controller";
 
 const router = Router();
@@ -94,5 +95,17 @@ router.post("/refresh", refresh);
  *         description: Logout successful
  */
 router.post("/logout", logout);
+
+/**
+ * @swagger
+ * /api/auth/cookies:
+ *   get:
+ *     summary: Get authentication cookies
+ *     tags: [Auth]
+ *     responses:
+ *       200:
+ *         description: Authentication cookies retrieved
+ */
+router.get("/cookies", getCookies);
 
 export default router;
