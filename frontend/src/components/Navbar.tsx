@@ -1,8 +1,18 @@
 
+import { useNavigate } from "react-router-dom";
+import { logoutUser } from "../api/auth.api";
 
 const Navbar = () => {
-    const handleLogout = () => {
-        
+
+  const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        try{
+          await logoutUser();
+          navigate("/")
+        }catch(error){
+          console.error("Logout failed:", error);
+        }
     }
 
   return (

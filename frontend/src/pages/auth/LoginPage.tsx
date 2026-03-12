@@ -26,16 +26,16 @@ const handleLogin = async (e: React.FormEvent) => {
     
     try {
 
-      const response = await loginUser({
+      await loginUser({
         email: formData.email,
         password: formData.password,
       })
-      console.log("Login successful:", response);
+     
+      navigate("/weather")
     } catch (error) {
       console.error("Login failed:", error);
     }
 
-    navigate("/weather")
 }
 
 
@@ -49,7 +49,7 @@ const handleLogin = async (e: React.FormEvent) => {
            <img src={weatherIcon} alt="weather" className="w-25 h-25" />
         </div>
 
-        <h1 className="text-3xl font-semibold text-center text-blue-900">
+        <h1 className="text-3xl font-bold text-center text-blue-900">
           Welcome Back!
         </h1>
 
@@ -60,6 +60,7 @@ const handleLogin = async (e: React.FormEvent) => {
         <form onSubmit={handleLogin} className="space-y-4">
 
           <Input
+            name="email"
             type="email"
             placeholder="Email"
             value={formData.email}
@@ -67,6 +68,7 @@ const handleLogin = async (e: React.FormEvent) => {
           />
 
           <Input
+            name="password"
             type="password"
             placeholder="Password"
             value={formData.password}
@@ -79,7 +81,7 @@ const handleLogin = async (e: React.FormEvent) => {
 
         <p className="text-center text-gray-600 mt-6">
           Don’t have an account?{" "}
-          <span className="text-blue-600 cursor-pointer font-medium">
+          <span className="text-blue-600 cursor-pointer font-medium" onClick={() => navigate("/signup")}>
             Sign Up
           </span>
         </p>

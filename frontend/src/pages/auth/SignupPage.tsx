@@ -48,7 +48,7 @@ const SignupPage = () => {
           <img src={weatherIcon} alt="weather" className="w-25 h-25" />
         </div>
 
-        <h2 className="text-3xl font-bold text-center mb-2">
+        <h2 className="text-3xl font-bold text-center mb-2 text-blue-900">
           Create Your Account
         </h2>
 
@@ -89,7 +89,7 @@ const SignupPage = () => {
 
         <p className="text-center text-gray-500 mt-6">
           Already have an account?{" "}
-          <span className="text-blue-600 font-semibold cursor-pointer">
+          <span className="text-blue-600 font-semibold cursor-pointer" onClick={() => navigate("/")}>
             Login
           </span>
         </p>
