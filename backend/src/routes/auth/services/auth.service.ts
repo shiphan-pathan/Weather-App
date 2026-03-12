@@ -39,6 +39,8 @@ export const loginService = async (email: string, password: string) => {
   const accessToken = generateAccessToken(user.id);
   const refreshToken = generateRefreshToken(user.id);
 
+  await prisma.refreshToken.deleteMany({ where: { userId: user.id } });
+
   await prisma.refreshToken.create({
     data: {
       token: refreshToken,

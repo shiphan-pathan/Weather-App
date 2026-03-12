@@ -42,8 +42,16 @@ export const logout = async (req: Request, res: Response) => {
 
   if (token) await logoutService(token);
 
-  res.clearCookie("accessToken");
-  res.clearCookie("refreshToken");
+  res.clearCookie("accessToken",{
+    httpOnly: true,
+    secure: false,
+    sameSite: "strict",
+  });
+  res.clearCookie("refreshToken",{
+    httpOnly: true,
+    secure: false,
+    sameSite: "strict",
+  });
 
   res.json({ message: "Logged out successfully" });
 };
