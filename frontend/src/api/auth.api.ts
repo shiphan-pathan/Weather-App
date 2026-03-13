@@ -36,6 +36,13 @@ export const refreshToken = async () => {
 };
 
 export const getCookies = async () => {
-  const response = await axiosInstance.get("/auth/cookies");
-  return response.data;
+  try {
+    const response = await axiosInstance.get("/auth/cookies");
+    return response.data;
+  } catch (error: any) {
+    if (error.response?.status === 401) {
+      return { authenticated: false };
+    }
+    throw error;
+  }
 };

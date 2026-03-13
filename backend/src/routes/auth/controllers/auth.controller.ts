@@ -45,18 +45,20 @@ export const logout = async (req: Request, res: Response) => {
   res.clearCookie("accessToken",{
     httpOnly: true,
     secure: false,
-    sameSite: "strict",
+    sameSite: "lax",
   });
   res.clearCookie("refreshToken",{
     httpOnly: true,
     secure: false,
-    sameSite: "strict",
+    sameSite: "lax",
   });
 
   res.json({ message: "Logged out successfully" });
 };
 
 export const getCookies = (req: Request, res: Response) => {
+  
+
   const token = req.cookies.accessToken; 
 
   if (!token) return res.status(401).json({ message: "Unauthorized" });

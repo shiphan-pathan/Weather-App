@@ -10,9 +10,8 @@ import { env } from "./config/env";
 
 const app = express();
 
-app.use(express.json());
+
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-app.use(cookieParser());
 
 console.log("CLIENT_URL from env:", env.CLIENT_URL);
 
@@ -22,6 +21,9 @@ app.use(
     credentials: true,
   })
 );
+
+app.use(cookieParser());
+app.use(express.json());
 
 // app.use(csrf({ cookie: true }));
 

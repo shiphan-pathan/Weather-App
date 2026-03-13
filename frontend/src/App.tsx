@@ -10,6 +10,7 @@ import LoginPage from './pages/auth/LoginPage'
 function App() {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   const checkAuth = async () => {
     try {
@@ -17,6 +18,8 @@ function App() {
       setIsAuthenticated(response.authenticated)
     } catch  {
       setIsAuthenticated(false)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -25,6 +28,11 @@ function App() {
   }, [])
 
   const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
+
+    if (loading) {
+      return <div>Loading...</div>
+    }
+
     if (!isAuthenticated) {
       return <Navigate to="/" />
     }

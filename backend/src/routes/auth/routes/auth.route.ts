@@ -13,6 +13,6 @@ router.post("/signup", signup);
 router.post("/login", login);
 router.post("/refresh", refresh);
 router.post("/logout", logout);
-router.get("/cookies", getCookies);
+router.get("/cookies",  getCookies);
 
 export default router;
