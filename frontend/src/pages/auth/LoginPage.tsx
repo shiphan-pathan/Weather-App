@@ -31,7 +31,7 @@ const handleLogin = async (e: React.FormEvent) => {
         password: formData.password,
       })
      
-      navigate("/weather")
+      window.location.href = "/weather";
     } catch (error) {
       console.error("Login failed:", error);
     }
