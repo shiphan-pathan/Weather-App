@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import csrf from "csurf";
+
 
 import swaggerUi from "swagger-ui-express";
 import swaggerSpec from "./swagger";
@@ -25,7 +25,6 @@ app.use(
 app.use(cookieParser());
 app.use(express.json());
 
-// app.use(csrf({ cookie: true }));
 
 app.use("/api/auth", authRoutes);
 
